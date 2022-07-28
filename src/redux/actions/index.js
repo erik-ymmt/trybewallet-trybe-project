@@ -35,3 +35,8 @@ export const fetchCurrencies = () => (
     }
   }
 );
+
+export const addExpenseAction = (formData) => ({
+  type: ADD_EXPENSE,
+  payload: formData,
+});

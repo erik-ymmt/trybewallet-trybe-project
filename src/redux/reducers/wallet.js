@@ -4,7 +4,7 @@ import {
 } from '../actions';
 
 const INITIAL_STATE = {
-  currencies: [], // array de string
+  currencies: [],
   expenses: [], // array de objetos, com cada objeto tendo as chaves id, value, currency, method, tag, description e exchangeRates
   editor: false, // valor booleano que indica de uma despesa está sendo editada
   idToEdit: 0, // valor numérico que armazena o id da despesa que esta sendo editada
@@ -14,7 +14,7 @@ const walletReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
   case ADD_EXPENSE:
-    return { ...state };
+    return { ...state, expenses: [...state.expenses, payload] };
   case REQUEST_CURRENCIES_LOADING:
     return { ...state, currencies: payload };
   case REQUEST_CURRENCIES_SUCCESS:

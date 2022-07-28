@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { string } from 'stylelint/lib/formatters';
-import { fetchCurrencies } from '../redux/actions';
+import { addExpenseAction, fetchCurrencies } from '../redux/actions';
 
 class WalletForm extends Component {
   componentDidMount() {
@@ -10,17 +10,48 @@ class WalletForm extends Component {
     dispatch(fetchCurrencies());
   }
 
+  getIdFromState = () => {
+    const { getId } = this.props;
+    return getId.length;
+  }
+
+  getFormValues = (event) => {
+    const { dispatch } = this.props;
+    event.preventDefault();
+    const form = document.getElementById('wallet-form');
+    const formData = new FormData(form);
+    const formValues = {
+      id: this.getIdFromState(),
+      value: formData.get('value'),
+      description: formData.get('description'),
+      currency: formData.get('currency'),
+      method: formData.get('method'),
+      tag: formData.get('tag'),
+    };
+    console.log(formValues);
+    dispatch(addExpenseAction(formValues));
+  }
+  // referência FormData: https://stackoverflow.com/questions/588263/how-can-i-get-all-a-forms-values-that-would-be-submitted-without-submitting
+
   render() {
     const { currencies } = this.props;
     return (
-      <form>
+      <form id="wallet-form">
         <label htmlFor="value">
           Valor:
-          <input type="number" data-testid="value-input" />
+          <input
+            type="number"
+            data-testid="value-input"
+            name="value"
+          />
         </label>
         <label htmlFor="description">
           Descrição
-          <input type="text" data-testid="description-input" />
+          <input
+            type="text"
+            data-testid="description-input"
+            name="description"
+          />
         </label>
         <label htmlFor="currencies">
           Moeda:
@@ -30,14 +61,14 @@ class WalletForm extends Component {
           </select>
         </label>
         <label htmlFor="method">
-          <select data-testid="method-input">
+          <select data-testid="method-input" name="method">
             <option value="dinheiro">Dinheiro</option>
             <option value="credito">Cartão de crédito</option>
             <option value="debito">Cartão de débito</option>
           </select>
         </label>
         <label htmlFor="type">
-          <select data-testid="tag-input">
+          <select data-testid="tag-input" name="tag">
             <option value="alimentacao">Alimentação</option>
             <option value="lazer">Lazer</option>
             <option value="trabalho">Trabalho</option>
@@ -45,19 +76,32 @@ class WalletForm extends Component {
             <option value="saude">Saúde</option>
           </select>
         </label>
-
+        <button
+          type="button"
+          onClick={ this.getFormValues }
+        >
+          Adicionar despesa
+        </button>
       </form>
     );
   }
 }
 
+// id, value, currency, method, tag, description e exchangeRates
+
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
+  getId: state.wallet.expenses,
 });
 
-export default connect(mapStateToProps)(WalletForm);
+// const mapDispatchToProps = (dispatch) => ({
+
+// });
+
+export default connect(mapStateToProps, null)(WalletForm);
 
 WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(string).isRequired,
+  getId: PropTypes.arrayOf(string).isRequired,
   dispatch: PropTypes.func.isRequired,
 };
