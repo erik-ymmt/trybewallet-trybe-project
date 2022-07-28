@@ -1,4 +1,7 @@
-import { ADD_EXPENSE } from '../actions';
+import {
+  ADD_EXPENSE,
+  REQUEST_CURRENCIES_LOADING, REQUEST_CURRENCIES_SUCCESS, REQUEST_CURRENCIES_FAIL,
+} from '../actions';
 
 const INITIAL_STATE = {
   currencies: [], // array de string
@@ -8,9 +11,16 @@ const INITIAL_STATE = {
 };
 
 const walletReducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
   case ADD_EXPENSE:
     return { ...state };
+  case REQUEST_CURRENCIES_LOADING:
+    return { ...state, currencies: payload };
+  case REQUEST_CURRENCIES_SUCCESS:
+    return { ...state, currencies: payload };
+  case REQUEST_CURRENCIES_FAIL:
+    return { ...state, currencies: payload };
   default:
     return state;
   }

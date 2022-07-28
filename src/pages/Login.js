@@ -41,11 +41,11 @@ class Login extends React.Component {
     if (this.emailValidation() && this.passwordValidation()) {
       this.setState({
         isBtnDisabled: false,
-      }, console.log('enabled'));
+      });
     } else {
       this.setState({
         isBtnDisabled: true,
-      }, console.log('disabled'));
+      });
     }
   }
 
