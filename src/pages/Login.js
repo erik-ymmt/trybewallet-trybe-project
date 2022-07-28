@@ -23,8 +23,9 @@ class Login extends React.Component {
 
   emailValidation = () => {
     const { email } = this.state;
-    const minLength = 6;
-    return email.includes('@') && email.includes('.') && email.length > minLength;
+    const validEmailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    // referência regex: https://regexr.com/3e48o
+    return email.match(validEmailRegex);
   }
 
   passwordValidation = () => {
