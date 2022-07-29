@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { string } from 'stylelint/lib/formatters';
-import { addExpenseAction, fetchCurrencies } from '../redux/actions';
+import { fetchCurrencies, fetchCurrenciesExchange } from '../redux/actions';
 
 class WalletForm extends Component {
   componentDidMount() {
@@ -14,6 +14,16 @@ class WalletForm extends Component {
     const { getId } = this.props;
     return getId.length;
   }
+
+  // getCurrenciesValues = async () => {
+  //   try {
+  //     const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+  //     const data = await response.json();
+  //     return data;
+  //   } catch (error) {
+  //     this.setState(expenses: data);
+  //   }
+  // }
 
   getFormValues = (event) => {
     const { dispatch } = this.props;
@@ -29,7 +39,7 @@ class WalletForm extends Component {
       tag: formData.get('tag'),
     };
     console.log(formValues);
-    dispatch(addExpenseAction(formValues));
+    dispatch(fetchCurrenciesExchange(formValues));
   }
   // referência FormData: https://stackoverflow.com/questions/588263/how-can-i-get-all-a-forms-values-that-would-be-submitted-without-submitting
 
@@ -95,7 +105,7 @@ const mapStateToProps = (state) => ({
 });
 
 // const mapDispatchToProps = (dispatch) => ({
-
+//   saveFormData: (formData) => dispatch(fetchCurrenciesExchange(formData)),
 // });
 
 export default connect(mapStateToProps, null)(WalletForm);

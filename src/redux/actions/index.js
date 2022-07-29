@@ -36,7 +36,20 @@ export const fetchCurrencies = () => (
   }
 );
 
-export const addExpenseAction = (formData) => ({
+export const addExpenseAction = (formData, exchangeValues) => ({
   type: ADD_EXPENSE,
-  payload: formData,
+  payload: { ...formData, exchangeValues },
 });
+
+export const fetchCurrenciesExchange = (formData) => (
+  async (dispatch) => {
+    try {
+      const response = await fetch('https://economia.awesomeapi.com.br/json/all');
+      const data = await response.json();
+      dispatch(addExpenseAction(formData, data));
+      console.log(formData);
+    } catch (error) {
+      // dispatch(currenciesActionFail());
+    }
+  }
+);
