@@ -26,8 +26,17 @@ const calculateTotalExpenses = (state) => {
   if (expenses.length === 0) {
     return 0;
   }
-  // return expenses.reduce((acc, cur) => cur.value + acc);
-  return 1;
+  const sumExpenses = expenses.reduce(((acc, cur) => {
+    const exchangeCurrency = cur.currency;
+    const originalValue = cur.value;
+    const exchangeRate = cur.exchangeRates[exchangeCurrency].ask;
+    const exchangedValue = originalValue * exchangeRate;
+    // console.log(exchangeCurrency, 'exchangeCurrency');
+    // console.log(originalValue, 'originalValue');
+    // console.log(exchangeRate, 'exchangeRate');
+    return Number(acc) + exchangedValue;
+  }), 0);
+  return sumExpenses.toFixed(2);
 };
 
 const mapStateToProps = (state) => ({

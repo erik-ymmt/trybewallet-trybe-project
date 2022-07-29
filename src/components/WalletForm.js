@@ -15,15 +15,7 @@ class WalletForm extends Component {
     return getId.length;
   }
 
-  // getCurrenciesValues = async () => {
-  //   try {
-  //     const response = await fetch('https://economia.awesomeapi.com.br/json/all');
-  //     const data = await response.json();
-  //     return data;
-  //   } catch (error) {
-  //     this.setState(expenses: data);
-  //   }
-  // }
+  clearForm = () => {}
 
   getFormValues = (event) => {
     const { dispatch } = this.props;
@@ -38,8 +30,8 @@ class WalletForm extends Component {
       method: formData.get('method'),
       tag: formData.get('tag'),
     };
-    console.log(formValues);
     dispatch(fetchCurrenciesExchange(formValues));
+    form.reset();
   }
   // referência FormData: https://stackoverflow.com/questions/588263/how-can-i-get-all-a-forms-values-that-would-be-submitted-without-submitting
 
@@ -72,18 +64,18 @@ class WalletForm extends Component {
         </label>
         <label htmlFor="method">
           <select data-testid="method-input" name="method">
-            <option value="dinheiro">Dinheiro</option>
-            <option value="credito">Cartão de crédito</option>
-            <option value="debito">Cartão de débito</option>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Cartão de crédito">Cartão de crédito</option>
+            <option value="Cartão de débito">Cartão de débito</option>
           </select>
         </label>
         <label htmlFor="type">
           <select data-testid="tag-input" name="tag">
-            <option value="alimentacao">Alimentação</option>
-            <option value="lazer">Lazer</option>
-            <option value="trabalho">Trabalho</option>
-            <option value="transporte">Transporte</option>
-            <option value="saude">Saúde</option>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Saúde">Saúde</option>
           </select>
         </label>
         <button
