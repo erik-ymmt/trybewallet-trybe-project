@@ -59,7 +59,7 @@ class WalletForm extends Component {
           Moeda:
           <select name="currency" id="currency" data-testid="currency-input">
             {currencies.map((currency) => (
-              <option key={ currency } value={ currency }>{currency}</option>)) }
+              <option key={ currency } value={ currency }>{currency}</option>))}
           </select>
         </label>
         <label htmlFor="method">
@@ -94,7 +94,7 @@ const mapStateToProps = (state) => ({
   getId: state.wallet.expenses,
 });
 
-export default connect(mapStateToProps, null)(WalletForm);
+export default connect(mapStateToProps)(WalletForm);
 
 WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(string).isRequired,
