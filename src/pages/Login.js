@@ -66,6 +66,7 @@ class Login extends React.Component {
           value={ email }
           name="email"
           onChange={ this.handleChange }
+          placeholder="email"
           data-testid="email-input"
         />
         <input
@@ -74,6 +75,7 @@ class Login extends React.Component {
           name="password"
           onChange={ this.handleChange }
           data-testid="password-input"
+          placeholder="senha"
         />
         <button
           type="button"
