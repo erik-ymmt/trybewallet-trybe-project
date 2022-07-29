@@ -24,7 +24,7 @@ class Header extends Component {
 const calculateTotalExpenses = (state) => {
   const { wallet: { expenses } } = state;
   if (expenses.length === 0) {
-    return 0;
+    return Number(0.00).toFixed(2);
   }
   const sumExpenses = expenses.reduce(((acc, cur) => {
     const exchangeCurrency = cur.currency;
@@ -35,7 +35,7 @@ const calculateTotalExpenses = (state) => {
     // console.log(originalValue, 'originalValue');
     // console.log(exchangeRate, 'exchangeRate');
     return Number(acc) + exchangedValue;
-  }), 0);
+  }), 0.00);
   return sumExpenses.toFixed(2);
 };
 

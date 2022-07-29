@@ -1,6 +1,7 @@
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export const ADD_EXPENSE = 'ADD_EXPENSE';
+export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 // export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 // export const FINISH_EDIT_EXPENSE = 'FINISH_EDIT_EXPENSE';
 export const REQUEST_CURRENCIES_LOADING = 'REQUEST_CURRENCIES_LOADING';
@@ -39,6 +40,11 @@ export const fetchCurrencies = () => (
 export const addExpenseAction = (formData, exchangeRates) => ({
   type: ADD_EXPENSE,
   payload: { ...formData, exchangeRates },
+});
+
+export const removeExpenseAction = (id) => ({
+  type: REMOVE_EXPENSE,
+  payload: id,
 });
 
 export const fetchCurrenciesExchange = (formData) => (

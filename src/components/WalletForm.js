@@ -89,16 +89,10 @@ class WalletForm extends Component {
   }
 }
 
-// id, value, currency, method, tag, description e exchangeRates
-
 const mapStateToProps = (state) => ({
   currencies: state.wallet.currencies,
   getId: state.wallet.expenses,
 });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   saveFormData: (formData) => dispatch(fetchCurrenciesExchange(formData)),
-// });
 
 export default connect(mapStateToProps, null)(WalletForm);
 
