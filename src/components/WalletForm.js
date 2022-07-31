@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { string } from 'stylelint/lib/formatters';
-import { editExpenseAction, fetchCurrencies, fetchCurrenciesExchange } from '../redux/actions';
+import { editExpenseAction,
+  fetchCurrencies,
+  fetchCurrenciesExchange,
+} from '../redux/actions';
 
 class WalletForm extends Component {
   componentDidMount() {
@@ -126,7 +129,8 @@ const mapStateToProps = (state) => ({
   getId: state.wallet.expenses,
   editor: state.wallet.editor,
   idToEdit: state.wallet.idToEdit,
-  exchangeRates: (id) => state.wallet.expenses.find((expense) => expense.id === id).exchangeRates,
+  exchangeRates: (id) => state.wallet.expenses
+    .find((expense) => expense.id === id).exchangeRates,
 });
 
 export default connect(mapStateToProps)(WalletForm);
