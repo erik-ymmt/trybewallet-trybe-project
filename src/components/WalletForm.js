@@ -18,8 +18,6 @@ class WalletForm extends Component {
     return getId.length;
   }
 
-  clearForm = () => {}
-
   saveFormValues = (event) => {
     const { dispatch } = this.props;
     event.preventDefault();
@@ -37,7 +35,7 @@ class WalletForm extends Component {
     form.reset();
   }
 
-  // referência FormData: https://stackoverflow.com/questions/588263/how-can-i-get-all-a-forms-values-that-would-be-submitted-without-submitting
+  // referência new FormData: https://stackoverflow.com/questions/588263/how-can-i-get-all-a-forms-values-that-would-be-submitted-without-submitting
 
   editFormValues = (event) => {
     const { dispatch, idToEdit, exchangeRates } = this.props;
@@ -53,7 +51,6 @@ class WalletForm extends Component {
       tag: formData.get('tag'),
       exchangeRates: exchangeRates(idToEdit),
     };
-    // console.log(formValues);
     dispatch(editExpenseAction(formValues));
     form.reset();
   }
