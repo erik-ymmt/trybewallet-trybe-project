@@ -63,12 +63,9 @@ export const fetchCurrenciesExchange = (formData) => (
     try {
       const response = await fetch('https://economia.awesomeapi.com.br/json/all');
       const data = await response.json();
-      // formData.exchangedValue = 0;
       dispatch(addExpenseAction(formData, data));
-      // (formData.currency)
-      // console.log(formData.currency);
     } catch (error) {
-      // dispatch(currenciesActionFail());
+      // TODO dispatch(currenciesActionFail());
     }
   }
 );
