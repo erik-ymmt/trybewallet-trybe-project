@@ -2,7 +2,8 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
-// export const EDIT_EXPENSE = 'EDIT_EXPENSE';
+export const ACTIVATE_EDIT_EXPENSE = 'ACTIVATE_EDIT_EXPENSE';
+export const EDIT_EXPENSE = 'EDIT_EXPENSE';
 // export const FINISH_EDIT_EXPENSE = 'FINISH_EDIT_EXPENSE';
 export const REQUEST_CURRENCIES_LOADING = 'REQUEST_CURRENCIES_LOADING';
 export const REQUEST_CURRENCIES_SUCCESS = 'REQUEST_CURRENCIES_SUCCESS';
@@ -45,6 +46,16 @@ export const addExpenseAction = (formData, exchangeRates) => ({
 export const removeExpenseAction = (id) => ({
   type: REMOVE_EXPENSE,
   payload: id,
+});
+
+export const activateEditionAction = (id) => ({
+  type: ACTIVATE_EDIT_EXPENSE,
+  payload: id,
+});
+
+export const editExpenseAction = (editedExpense) => ({
+  type: EDIT_EXPENSE,
+  payload: editedExpense,
 });
 
 export const fetchCurrenciesExchange = (formData) => (
