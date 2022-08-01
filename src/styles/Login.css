@@ -27,6 +27,7 @@ html {
   background-color: var(--dark-grey);
   border: white 1px solid;
   border-radius: 5px;
+  color: white;
   flex-shrink: 1;
   font-family: var(--font1);
   font-size: 1.5rem;

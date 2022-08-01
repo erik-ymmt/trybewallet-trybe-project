@@ -1,0 +1,19 @@
+header {
+  align-items: center;
+  background-color: var(--yellow);
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: space-between;
+  padding: 15px 35px;
+}
+
+header h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+header section {
+  display: flex;
+  gap: 20px;
+}
+
