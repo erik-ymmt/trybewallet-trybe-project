@@ -9,7 +9,9 @@ class Header extends Component {
     const { email, totalExpenses } = this.props;
     return (
       <header>
-        <h3>Trybewallet</h3>
+        <Link to="/">
+          <h3 className="title">Trybewallet</h3>
+        </Link>
         <section>
           <div>
             <span>
@@ -18,7 +20,7 @@ class Header extends Component {
             </span>
             <span data-testid="email-field">
               {email === ''
-                ? <Link to="/">Faça o Login</Link>
+                ? <Link to="/"><span className="link">Faça o Login</span></Link>
                 : email}
             </span>
           </div>

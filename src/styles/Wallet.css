@@ -1,0 +1,36 @@
+form {
+  display: flex;
+  font-size: 1.2rem;
+  gap: 15px;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+form label {
+  color: white;
+  flex-grow: 1;
+}
+
+form label input , select {
+  background-color: var(--dark-grey);
+  border: var(--yellow) 1px solid;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  padding: 5px;
+  width: 90%;
+}
+
+form button {
+  background-color: var(--yellow);
+  border: var(--yellow) 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 15px;
+}
+
+form button:hover {
+  background-color: var(--dark-grey);
+  color: white;
+}

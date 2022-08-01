@@ -5,6 +5,7 @@ import { editExpenseAction,
   fetchCurrencies,
   fetchCurrenciesExchange,
 } from '../redux/actions';
+import '../styles/Wallet.css';
 
 class WalletForm extends Component {
   componentDidMount() {
@@ -64,6 +65,7 @@ class WalletForm extends Component {
             type="number"
             data-testid="value-input"
             name="value"
+            placeholder="Valor na moeda utilizada"
           />
         </label>
         <label htmlFor="description">
@@ -72,6 +74,7 @@ class WalletForm extends Component {
             type="text"
             data-testid="description-input"
             name="description"
+            placeholder="Breve descrição da despesa"
           />
         </label>
         <label htmlFor="currencies">

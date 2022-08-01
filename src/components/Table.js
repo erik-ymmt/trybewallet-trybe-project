@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { activateEditionAction, removeExpenseAction } from '../redux/actions';
+import '../styles/WalletTable.css';
 
 class Table extends Component {
   render() {
