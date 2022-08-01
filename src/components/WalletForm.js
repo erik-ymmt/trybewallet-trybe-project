@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { string } from 'stylelint/lib/formatters';
 import { editExpenseAction,
   fetchCurrencies,
   fetchCurrenciesExchange,
@@ -60,7 +59,7 @@ class WalletForm extends Component {
     return (
       <form id="wallet-form">
         <label htmlFor="value">
-          Valor:
+          <div>Valor:</div>
           <input
             type="number"
             data-testid="value-input"
@@ -68,7 +67,7 @@ class WalletForm extends Component {
           />
         </label>
         <label htmlFor="description">
-          Descrição
+          <div>Descrição</div>
           <input
             type="text"
             data-testid="description-input"
@@ -76,21 +75,25 @@ class WalletForm extends Component {
           />
         </label>
         <label htmlFor="currencies">
-          Moeda:
-          <select name="currency" id="currency" data-testid="currency-input">
-            {currencies.map((currency) => (
-              <option key={ currency } value={ currency }>{currency}</option>))}
+          <div>Moeda:</div>
+          <select name="currency" id="currencies" data-testid="currency-input">
+            {
+              currencies.map((currency) => (
+                <option key={ currency } value={ currency }>{currency}</option>))
+            }
           </select>
         </label>
         <label htmlFor="method">
-          <select data-testid="method-input" name="method">
+          <div>Método de Pagamento:</div>
+          <select data-testid="method-input" name="method" id="method">
             <option value="Dinheiro">Dinheiro</option>
             <option value="Cartão de crédito">Cartão de crédito</option>
             <option value="Cartão de débito">Cartão de débito</option>
           </select>
         </label>
         <label htmlFor="type">
-          <select data-testid="tag-input" name="tag">
+          <div>Tipo:</div>
+          <select data-testid="tag-input" name="tag" id="type">
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
             <option value="Trabalho">Trabalho</option>
@@ -130,11 +133,11 @@ const mapStateToProps = (state) => ({
     .find((expense) => expense.id === id).exchangeRates,
 });
 
-export default connect(mapStateToProps)(WalletForm);
+export default connect(mapStateToProps, null)(WalletForm);
 
 WalletForm.propTypes = {
-  currencies: PropTypes.arrayOf(string).isRequired,
-  getId: PropTypes.arrayOf(string).isRequired,
+  currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  getId: PropTypes.arrayOf(PropTypes.string).isRequired,
   dispatch: PropTypes.func.isRequired,
   editor: PropTypes.bool.isRequired,
   idToEdit: PropTypes.number.isRequired,
