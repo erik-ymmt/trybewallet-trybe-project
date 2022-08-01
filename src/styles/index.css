@@ -1,0 +1,24 @@
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700;800&display=swap') ;
+
+:root {
+
+  --dark-grey: rgb(96, 88, 86);
+
+  --dark-blue: rgb(39, 65, 86);
+
+  --light-blue: rgb(165, 196, 212);
+
+  --yellow: rgb(245, 221, 144);
+
+  --font1: 'Dosis', sans-serif;
+}
+
+body {
+  font-family: var(--font1);
+}

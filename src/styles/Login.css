@@ -1,0 +1,58 @@
+html {
+  background-color: var(--dark-grey);
+}
+
+.login-page {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.login-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+}
+
+.login-container h2 {
+  color: white;
+  font-size: 5rem;
+  font-weight: 400;
+}
+
+.login-container input {
+  background-color: var(--dark-grey);
+  border: white 1px solid;
+  border-radius: 5px;
+  flex-shrink: 1;
+  font-family: var(--font1);
+  font-size: 1.5rem;
+  padding: 15px;
+  width: 90%;
+}
+
+.login-container button {
+  background-color: white;
+  border: solid 1px var(--dark-grey);
+  border-radius: 5px;
+  font-family: var(--font1);
+  font-size: 1.5rem;
+  padding: 15px;
+  width: 100%;
+}
+
+.login-container button:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: white 1px solid;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-family: var(--font1);
+  font-size: 1.5rem;
+  padding: 15px;
+  width: 100%;
+}
+
