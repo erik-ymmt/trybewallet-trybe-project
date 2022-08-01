@@ -32,3 +32,7 @@ a {
   color: black;
   text-decoration: none;
 }
+
+.total-expenses {
+  font-weight: 600;
+}

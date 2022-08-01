@@ -18,7 +18,7 @@ html {
 }
 
 .login-container h2 {
-  color: white;
+  color: var(--yellow);
   font-size: 5rem;
   font-weight: 400;
 }
@@ -36,7 +36,7 @@ html {
 }
 
 .login-container button {
-  background-color: white;
+  background-color: var(--yellow);
   border: solid 1px var(--dark-grey);
   border-radius: 5px;
   font-family: var(--font1);
