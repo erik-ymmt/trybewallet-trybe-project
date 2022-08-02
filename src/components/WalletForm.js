@@ -140,7 +140,7 @@ export default connect(mapStateToProps, null)(WalletForm);
 
 WalletForm.propTypes = {
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  getId: PropTypes.arrayOf(PropTypes.string).isRequired,
+  getId: PropTypes.arrayOf(PropTypes.object).isRequired,
   dispatch: PropTypes.func.isRequired,
   editor: PropTypes.bool.isRequired,
   idToEdit: PropTypes.number.isRequired,

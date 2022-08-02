@@ -57,3 +57,7 @@ html {
   width: 100%;
 }
 
+.login-container button:disabled {
+  cursor: not-allowed;
+}
+
