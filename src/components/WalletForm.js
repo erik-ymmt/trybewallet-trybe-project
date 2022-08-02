@@ -35,6 +35,7 @@ class WalletForm extends Component {
   getIdFromState = () => {
     const { getId } = this.props;
     return getId.length;
+    // foi feito assim para seguir o proposto no projeto, porém isso gera um bug na edição;
   }
 
   saveFormValues = (event) => {
