@@ -33,9 +33,17 @@ class WalletForm extends Component {
   }
 
   getIdFromState = () => {
-    const { getId } = this.props;
-    return getId.length;
-    // foi feito assim para seguir o proposto no projeto, porém isso gera um bug na edição;
+    const { getId, savedValues } = this.props;
+    const newId = getId.length;
+    if (savedValues(newId)) {
+      const maxIds = 1000;
+      let id = Math.floor(Math.random() * maxIds);
+      while (savedValues(id)) {
+        id = Math.floor(Math.random() * maxIds);
+      }
+      return id;
+    }
+    return newId;
   }
 
   saveFormValues = (event) => {
