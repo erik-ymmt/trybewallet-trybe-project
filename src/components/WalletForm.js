@@ -1,16 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { editExpenseAction,
+import { cancelEditor, editExpenseAction,
   fetchCurrencies,
   fetchCurrenciesExchange,
 } from '../redux/actions';
 import '../styles/Wallet.css';
 
+const walletForm = 'wallet-form';
+
 class WalletForm extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchCurrencies());
+  }
+
+  componentDidUpdate() {
+    const { savedValues, editor, idToEdit } = this.props;
+    if (editor) {
+      const description = document.getElementById('description');
+      const value = document.getElementById('value');
+      const currency = document.getElementById('currencies');
+      const method = document.getElementById('method');
+      const type = document.getElementById('type');
+
+      description.value = savedValues(idToEdit).description;
+      value.value = savedValues(idToEdit).value;
+      currency.value = savedValues(idToEdit).currency;
+      method.value = savedValues(idToEdit).method;
+      type.value = savedValues(idToEdit).tag;
+    }
   }
 
   getIdFromState = () => {
@@ -21,7 +40,7 @@ class WalletForm extends Component {
   saveFormValues = (event) => {
     const { dispatch } = this.props;
     event.preventDefault();
-    const form = document.getElementById('wallet-form');
+    const form = document.getElementById(walletForm);
     const formData = new FormData(form);
     const formValues = {
       id: this.getIdFromState(),
@@ -40,7 +59,7 @@ class WalletForm extends Component {
   editFormValues = (event) => {
     const { dispatch, idToEdit, exchangeRates } = this.props;
     event.preventDefault();
-    const form = document.getElementById('wallet-form');
+    const form = document.getElementById(walletForm);
     const formData = new FormData(form);
     const formValues = {
       id: idToEdit,
@@ -55,19 +74,17 @@ class WalletForm extends Component {
     form.reset();
   }
 
+  cancelEditorClearForm = () => {
+    const { dispatch } = this.props;
+    dispatch(cancelEditor());
+    const form = document.getElementById(walletForm);
+    form.reset();
+  }
+
   render() {
     const { currencies, editor } = this.props;
     return (
       <form id="wallet-form">
-        <label htmlFor="value">
-          <div>Valor:</div>
-          <input
-            type="number"
-            data-testid="value-input"
-            name="value"
-            placeholder="Valor na moeda utilizada"
-          />
-        </label>
         <label htmlFor="description">
           <div>Descrição</div>
           <input
@@ -75,10 +92,22 @@ class WalletForm extends Component {
             data-testid="description-input"
             name="description"
             placeholder="Breve descrição da despesa"
+            id="description"
+          />
+        </label>
+        <label htmlFor="value">
+          <div>Valor:</div>
+          <input
+            type="number"
+            data-testid="value-input"
+            name="value"
+            placeholder="Valor na moeda utilizada"
+            min="0"
+            id="value"
           />
         </label>
         <label htmlFor="currencies">
-          <div>Moeda:</div>
+          <div>Moeda de Conversão:</div>
           <select name="currency" id="currencies" data-testid="currency-input">
             {
               currencies.map((currency) => (
@@ -106,12 +135,21 @@ class WalletForm extends Component {
         </label>
         { editor
           ? (
-            <button
-              type="button"
-              onClick={ this.editFormValues }
-            >
-              Editar despesa
-            </button>
+            <div>
+
+              <button
+                type="button"
+                onClick={ this.editFormValues }
+              >
+                Editar despesa
+              </button>
+              <button
+                type="button"
+                onClick={ this.cancelEditorClearForm }
+              >
+                Cancelar
+              </button>
+            </div>
           )
           : (
             <button
@@ -134,6 +172,8 @@ const mapStateToProps = (state) => ({
   idToEdit: state.wallet.idToEdit,
   exchangeRates: (id) => state.wallet.expenses
     .find((expense) => expense.id === id).exchangeRates,
+  savedValues: (id) => state.wallet.expenses
+    .find((expense) => expense.id === id),
 });
 
 export default connect(mapStateToProps, null)(WalletForm);
@@ -145,4 +185,5 @@ WalletForm.propTypes = {
   editor: PropTypes.bool.isRequired,
   idToEdit: PropTypes.number.isRequired,
   exchangeRates: PropTypes.func.isRequired,
+  savedValues: PropTypes.func.isRequired,
 };

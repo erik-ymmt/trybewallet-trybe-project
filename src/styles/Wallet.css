@@ -26,9 +26,23 @@ form button {
   border: var(--yellow) 1px solid;
   border-radius: 5px;
   cursor: pointer;
+  font-family: var(--font1);
   font-size: 1rem;
+  font-weight: 500;
+  margin-right: 2px;
   padding: 15px;
 }
+
+form button:nth-child( 2 ) {
+  background-color: rgb(206, 139, 139);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 5px;
+  padding: 15px;
+}
+
 
 form button:hover {
   background-color: var(--dark-grey);

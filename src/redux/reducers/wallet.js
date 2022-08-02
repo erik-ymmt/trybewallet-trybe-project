@@ -1,7 +1,8 @@
 import {
   ADD_EXPENSE,
   REQUEST_CURRENCIES_LOADING, REQUEST_CURRENCIES_SUCCESS,
-  REQUEST_CURRENCIES_FAIL, REMOVE_EXPENSE, EDIT_EXPENSE, ACTIVATE_EDIT_EXPENSE,
+  REQUEST_CURRENCIES_FAIL, REMOVE_EXPENSE, EDIT_EXPENSE,
+  ACTIVATE_EDIT_EXPENSE, CANCEL_EDIT_EXPENSE,
 } from '../actions';
 
 const INITIAL_STATE = {
@@ -36,6 +37,11 @@ const walletReducer = (state = INITIAL_STATE, action) => {
         }
         return expense;
       }),
+    };
+
+  case CANCEL_EDIT_EXPENSE:
+    return { ...state,
+      editor: false,
     };
 
   case REQUEST_CURRENCIES_LOADING:

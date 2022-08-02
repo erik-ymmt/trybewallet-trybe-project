@@ -12,13 +12,13 @@ class Table extends Component {
         <thead>
           <tr>
             <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
             <th>Valor</th>
             <th>Moeda</th>
+            <th>Moeda de conversão</th>
             <th>Câmbio utilizado</th>
             <th>Valor convertido</th>
-            <th>Moeda de conversão</th>
+            <th>Método de pagamento</th>
+            <th>Tipo</th>
             <th>Editar/Excluir</th>
           </tr>
         </thead>
@@ -30,15 +30,15 @@ class Table extends Component {
             return (
               <tr key={ id }>
                 <td>{description}</td>
-                <td>{tag}</td>
-                <td>{method}</td>
                 <td>{Number(value).toFixed(2)}</td>
+                <td>Real</td>
                 <td>{exchangeRates[currency].name}</td>
                 <td>{Number(exchangeRates[currency].ask).toFixed(2)}</td>
                 <td>
                   {(Number(value) * Number(exchangeRates[currency].ask)).toFixed(2)}
                 </td>
-                <td>Real</td>
+                <td>{method}</td>
+                <td>{tag}</td>
                 <td>
                   <button
                     type="button"
@@ -53,7 +53,7 @@ class Table extends Component {
                     data-testid="delete-btn"
                     onClick={ () => dispatch(removeExpenseAction(id)) }
                   >
-                    Deletar
+                    Excluir
                   </button>
                 </td>
               </tr>

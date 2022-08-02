@@ -4,7 +4,7 @@ export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 export const ACTIVATE_EDIT_EXPENSE = 'ACTIVATE_EDIT_EXPENSE';
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';
-// export const FINISH_EDIT_EXPENSE = 'FINISH_EDIT_EXPENSE';
+export const CANCEL_EDIT_EXPENSE = 'CANCEL_EDIT_EXPENSE';
 export const REQUEST_CURRENCIES_LOADING = 'REQUEST_CURRENCIES_LOADING';
 export const REQUEST_CURRENCIES_SUCCESS = 'REQUEST_CURRENCIES_SUCCESS';
 export const REQUEST_CURRENCIES_FAIL = 'REQUEST_CURRENCIES_FAIL';
@@ -57,6 +57,8 @@ export const editExpenseAction = (editedExpense) => ({
   type: EDIT_EXPENSE,
   payload: editedExpense,
 });
+
+export const cancelEditor = () => ({ type: CANCEL_EDIT_EXPENSE });
 
 export const fetchCurrenciesExchange = (formData) => (
   async (dispatch) => {
