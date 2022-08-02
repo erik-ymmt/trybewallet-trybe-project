@@ -48,3 +48,19 @@ form button:hover {
   background-color: var(--dark-grey);
   color: white;
 }
+
+@media screen and ( max-width : 1200px ) {
+
+  form {
+    display: flex;
+    flex-flow: wrap;
+    font-size: 1.2rem;
+    gap: 15px;
+    justify-content: space-around;
+    padding: 15px;
+  }
+
+  form label input , select {
+    width: 90%;
+  }
+}

@@ -18,7 +18,7 @@ class Table extends Component {
             <th>Câmbio utilizado</th>
             <th>Valor convertido</th>
             <th>Método de pagamento</th>
-            <th>Tipo</th>
+            <th>Tag</th>
             <th>Editar/Excluir</th>
           </tr>
         </thead>

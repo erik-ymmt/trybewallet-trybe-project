@@ -125,7 +125,7 @@ class WalletForm extends Component {
           </select>
         </label>
         <label htmlFor="type">
-          <div>Tipo:</div>
+          <div>Tag:</div>
           <select data-testid="tag-input" name="tag" id="type">
             <option value="Alimentação">Alimentação</option>
             <option value="Lazer">Lazer</option>
