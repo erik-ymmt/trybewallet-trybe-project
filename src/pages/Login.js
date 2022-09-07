@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
 import { userAction } from '../redux/actions';
 import '../styles/Login.css';
 
@@ -63,22 +64,38 @@ class Login extends React.Component {
       <div className="login-page">
         <section className="login-container">
           <h2>Trybewallet</h2>
-          <input
-            type="email"
-            value={ email }
-            name="email"
-            onChange={ this.handleChange }
-            placeholder="email"
-            data-testid="email-input"
-          />
-          <input
-            type="password"
-            value={ password }
-            name="password"
-            onChange={ this.handleChange }
-            data-testid="password-input"
-            placeholder="senha"
-          />
+          <div className="input-container">
+            <input
+              type="email"
+              value={ email }
+              name="email"
+              onChange={ this.handleChange }
+              placeholder="email"
+              data-testid="email-input"
+            />
+            <span
+              className="info"
+              title="Digite um email válido. ex.: valido@valido.com"
+            >
+              <AiOutlineQuestionCircle />
+            </span>
+          </div>
+          <div className="input-container">
+            <input
+              type="password"
+              value={ password }
+              name="password"
+              onChange={ this.handleChange }
+              data-testid="password-input"
+              placeholder="senha"
+            />
+            <span
+              className="info"
+              title="Digite uma senha com 6 ou mais caracteres. ex.: 123456"
+            >
+              <AiOutlineQuestionCircle />
+            </span>
+          </div>
           <button
             type="button"
             disabled={ isBtnDisabled }
