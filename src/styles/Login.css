@@ -61,16 +61,39 @@ html {
 .login-container button:hover {
   background-color: rgba(255, 255, 255, 0.5);
   border: white 1px solid;
-  border-radius: 5px;
   color: white;
   cursor: pointer;
-  font-family: var(--font1);
-  font-size: 1.5rem;
-  padding: 15px;
-  width: 100%;
 }
 
 .login-container button:disabled {
   cursor: not-allowed;
 }
 
+@media screen and ( max-width : 500px ) {
+
+  .login-container {
+    margin-left: 0;
+    width: 300px;
+  }
+
+  .login-container h2 {
+    align-self: center;
+    font-size: 3rem;
+  }
+
+  .input-container {
+    width: 300px;
+  }
+
+  .login-container input {
+    margin-left: 20px;
+    width: 220px;
+
+  }
+
+  .login-container button {
+    margin-left: 20px;
+    width: 250px;
+
+  }
+}
