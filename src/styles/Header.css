@@ -36,3 +36,22 @@ a {
 .total-expenses {
   font-weight: 600;
 }
+
+@media screen and ( max-width : 500px ) {
+
+  header h3 {
+    font-size: 1.5rem;
+  }
+
+  .emailContainer {
+    display: none;
+  }
+}
+
+@media screen and ( max-width : 350px ) {
+
+  header {
+    flex-direction: column;
+  }
+
+}

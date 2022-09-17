@@ -67,3 +67,18 @@ table button:nth-of-type( 2 ):hover {
     overflow: hidden;
   }
 }
+
+@media screen and ( max-width : 500px ) {
+
+  table {
+    display: block;
+    margin: 5px 15px;
+    max-width: 93%;
+    overflow: auto;
+  }
+
+  thead , tr {
+    min-width: 900px;
+    overflow: auto;
+  }
+}

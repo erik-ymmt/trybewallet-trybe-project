@@ -13,7 +13,7 @@ class Header extends Component {
           <h3 className="title">Trybewallet</h3>
         </Link>
         <section>
-          <div>
+          <div className="emailContainer">
             <span>
               Email:
               {' '}
