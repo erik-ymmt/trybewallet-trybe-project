@@ -13,6 +13,7 @@ class Login extends React.Component {
       email: '',
       password: '',
       isBtnDisabled: true,
+      infoBox: '',
     };
   }
 
@@ -21,6 +22,26 @@ class Login extends React.Component {
     this.setState({
       [name]: value,
     }, () => this.loginBtnValidation());
+  }
+
+  infoBoxTimer = () => {
+    setTimeout(() => this.setState({
+      infoBox: '',
+    }), 5000);
+  }
+
+  handleEmailInfoBox = () => {
+    this.setState({
+      infoBox: 'Digite um email válido. ex.: valido@valido.com',
+    });
+    this.infoBoxTimer();
+  }
+
+  handlePasswordInfoBox = () => {
+    this.setState({
+      infoBox: 'Digite uma senha com 6 ou mais caracteres. ex.: 123456',
+    });
+    this.infoBoxTimer();
   }
 
   emailValidation = () => {
@@ -59,7 +80,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const { email, password, isBtnDisabled } = this.state;
+    const { email, password, isBtnDisabled, infoBox } = this.state;
     return (
       <div className="login-page">
         <section className="login-container">
@@ -76,6 +97,7 @@ class Login extends React.Component {
             <span
               className="info"
               title="Digite um email válido. ex.: valido@valido.com"
+              onClick={ this.handleEmailInfoBox }
             >
               <AiOutlineQuestionCircle />
             </span>
@@ -92,6 +114,7 @@ class Login extends React.Component {
             <span
               className="info"
               title="Digite uma senha com 6 ou mais caracteres. ex.: 123456"
+              onClick={ this.handlePasswordInfoBox }
             >
               <AiOutlineQuestionCircle />
             </span>
@@ -103,6 +126,7 @@ class Login extends React.Component {
           >
             Entrar
           </button>
+          <p className="infoBox">{infoBox}</p>
         </section>
       </div>);
   }
